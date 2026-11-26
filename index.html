@@ -215,7 +215,7 @@
   .cicon img{width:100%;height:100%;object-fit:contain;border-radius:50%}
   .cicon svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
   .certs{padding-bottom:8px}
-  .page[data-page="certificaciones"] section,.page[data-page="educacion"] section{min-height:calc(100vh - 160px)}
+  .page[data-page="educacion"] section{min-height:calc(100vh - 160px)}
   .cert{position:relative;cursor:default;transition:border-color .2s,transform .2s}
   .cert:hover,.cert:focus-within{border-color:var(--accent);transform:translateY(-2px);z-index:5}
   .cert:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
@@ -284,6 +284,37 @@
   .banner .bside .bico{flex:none;width:2.4em;height:2.4em;object-fit:contain;filter:drop-shadow(0 1px 2px rgba(0,0,0,.6))}
   .banner .bside .bico.sm{width:1.9em;height:1.9em}
   .banner .bside span{gap:12px}
+  .rcard{position:relative;cursor:default;transition:border-color .2s,transform .2s,box-shadow .2s}
+  .rcard:hover,.rcard:focus-within{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.18);z-index:6}
+  .rcard:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .rpop{position:absolute;left:-1px;right:-1px;top:calc(100% + 8px);min-width:280px;background:var(--card);border:1px solid var(--accent);border-radius:12px;
+    padding:14px 16px;box-shadow:0 18px 40px rgba(0,0,0,.28);opacity:0;visibility:hidden;transform:translateY(-6px);
+    transition:opacity .2s ease,transform .2s ease,visibility 0s linear .2s;pointer-events:none}
+  .rpop::before{content:"";position:absolute;left:24px;bottom:100%;border:8px solid transparent;border-bottom-color:var(--accent)}
+  .rcard:hover .rpop,.rcard:focus-within .rpop{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto;transition:opacity .2s ease,transform .2s ease,visibility 0s}
+  .rpop .rk{font:600 .7rem 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  .rpop .rt{font-weight:700;margin:2px 0 8px}
+  .rpop ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:.9rem;color:var(--text)}
+  .rpop li::marker{color:var(--accent)}
+  .rgrid>.rcard:nth-child(5n) .rpop{left:auto}
+  @media (prefers-reduced-motion:reduce){ .rcard,.rpop{transition:none} .rcard:hover{transform:none} }
+  .langs{display:flex;flex-wrap:wrap;gap:12px}
+  .lang{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;min-width:220px}
+  .lang b{display:block;font-size:.95rem} .lang small{color:var(--muted);font-size:.8rem}
+  .flag{width:36px;height:24px;border-radius:3px;flex:none;box-shadow:0 0 0 1px var(--line)}
+  .iico{width:30px;height:30px;flex:none;fill:none;stroke:var(--accent);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;padding:4px;border-radius:8px;background:var(--accent-soft);box-sizing:content-box}
+  .lvl{display:inline-flex;gap:3px;margin-left:auto}
+  .lvl i{width:8px;height:14px;border-radius:2px;background:var(--line)}
+  .lvl i.on{background:var(--accent)}
+  .etabs{display:grid;grid-template-columns:repeat(2,minmax(0,340px));border-bottom:1px solid var(--line);margin-bottom:22px}
+  .etab{font:inherit;text-align:left;background:transparent;color:var(--muted);border:0;border-bottom:3px solid transparent;padding:12px 16px 14px;cursor:pointer;display:flex;flex-direction:column;gap:2px}
+  .etab .tn{font-weight:700;font-size:1.05rem;color:var(--text)}
+  .etab .tr{font-size:.82rem}
+  .etab:hover{background:var(--card)}
+  .etab[aria-selected="true"]{border-bottom-color:var(--accent);background:var(--card)}
+  .etab:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
+  .epanel[hidden]{display:none}
+  @media (max-width:640px){ .etabs{grid-template-columns:1fr 1fr} .etab .tr{display:none} }
   footer{padding:28px 0 48px;font-size:.85rem;color:var(--muted);font-family:var(--mono)}
   @media (max-width:640px){
     h1{font-size:1.9rem} .stats,.grid{grid-template-columns:1fr}
@@ -297,7 +328,7 @@
     <a class="brand" href="#inicio" aria-label="Inicio">Ing. Carlos <span>Santiago</span></a>
     <div class="navwrap" id="navwrap">
       <nav class="nav" id="mainnav" aria-label="Secciones">
-        <a href="#inicio" data-nav="inicio">Inicio</a><a href="#experiencia" data-nav="experiencia">Experiencia</a><a href="#proyectos" data-nav="proyectos">Proyectos</a><a href="#servicios" data-nav="servicios">Servicios</a><a href="#habilidades" data-nav="habilidades">Habilidades</a><a href="#certificaciones" data-nav="certificaciones">Certificaciones</a><a href="#educacion" data-nav="educacion">Educación</a>
+        <a href="#inicio" data-nav="inicio">Inicio</a><a href="#experiencia" data-nav="experiencia">Experiencia</a><a href="#proyectos" data-nav="proyectos">Proyectos</a><a href="#servicios" data-nav="servicios">Servicios</a><a href="#habilidades" data-nav="habilidades">Habilidades</a><a href="#educacion" data-nav="educacion">Educación</a>
       </nav>
       <button class="menu-btn" id="menubtn" type="button" aria-label="Menú" aria-expanded="false" aria-controls="mainnav"><i></i><i></i><i></i></button>
     </div>
@@ -335,7 +366,6 @@
       <svg class="qr-svg" viewBox="0 0 37 37" shape-rendering="crispEdges" role="img" aria-label="Código QR hacia https://csantiagomedina.github.io/cv/"><rect class="qr-bg" width="37" height="37"/><path class="qr-fg" d="M4 4h1v1h-1zM5 4h1v1h-1zM6 4h1v1h-1zM7 4h1v1h-1zM8 4h1v1h-1zM9 4h1v1h-1zM10 4h1v1h-1zM13 4h1v1h-1zM14 4h1v1h-1zM16 4h1v1h-1zM17 4h1v1h-1zM18 4h1v1h-1zM19 4h1v1h-1zM20 4h1v1h-1zM22 4h1v1h-1zM23 4h1v1h-1zM26 4h1v1h-1zM27 4h1v1h-1zM28 4h1v1h-1zM29 4h1v1h-1zM30 4h1v1h-1zM31 4h1v1h-1zM32 4h1v1h-1zM4 5h1v1h-1zM10 5h1v1h-1zM12 5h1v1h-1zM13 5h1v1h-1zM14 5h1v1h-1zM15 5h1v1h-1zM16 5h1v1h-1zM18 5h1v1h-1zM19 5h1v1h-1zM21 5h1v1h-1zM23 5h1v1h-1zM26 5h1v1h-1zM32 5h1v1h-1zM4 6h1v1h-1zM6 6h1v1h-1zM7 6h1v1h-1zM8 6h1v1h-1zM10 6h1v1h-1zM13 6h1v1h-1zM16 6h1v1h-1zM19 6h1v1h-1zM23 6h1v1h-1zM26 6h1v1h-1zM28 6h1v1h-1zM29 6h1v1h-1zM30 6h1v1h-1zM32 6h1v1h-1zM4 7h1v1h-1zM6 7h1v1h-1zM7 7h1v1h-1zM8 7h1v1h-1zM10 7h1v1h-1zM15 7h1v1h-1zM16 7h1v1h-1zM17 7h1v1h-1zM19 7h1v1h-1zM20 7h1v1h-1zM26 7h1v1h-1zM28 7h1v1h-1zM29 7h1v1h-1zM30 7h1v1h-1zM32 7h1v1h-1zM4 8h1v1h-1zM6 8h1v1h-1zM7 8h1v1h-1zM8 8h1v1h-1zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM15 8h1v1h-1zM16 8h1v1h-1zM17 8h1v1h-1zM18 8h1v1h-1zM19 8h1v1h-1zM21 8h1v1h-1zM22 8h1v1h-1zM23 8h1v1h-1zM26 8h1v1h-1zM28 8h1v1h-1zM29 8h1v1h-1zM30 8h1v1h-1zM32 8h1v1h-1zM4 9h1v1h-1zM10 9h1v1h-1zM14 9h1v1h-1zM18 9h1v1h-1zM19 9h1v1h-1zM20 9h1v1h-1zM22 9h1v1h-1zM23 9h1v1h-1zM24 9h1v1h-1zM26 9h1v1h-1zM32 9h1v1h-1zM4 10h1v1h-1zM5 10h1v1h-1zM6 10h1v1h-1zM7 10h1v1h-1zM8 10h1v1h-1zM9 10h1v1h-1zM10 10h1v1h-1zM12 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM20 10h1v1h-1zM22 10h1v1h-1zM24 10h1v1h-1zM26 10h1v1h-1zM27 10h1v1h-1zM28 10h1v1h-1zM29 10h1v1h-1zM30 10h1v1h-1zM31 10h1v1h-1zM32 10h1v1h-1zM16 11h1v1h-1zM21 11h1v1h-1zM23 11h1v1h-1zM4 12h1v1h-1zM6 12h1v1h-1zM8 12h1v1h-1zM10 12h1v1h-1zM13 12h1v1h-1zM16 12h1v1h-1zM20 12h1v1h-1zM21 12h1v1h-1zM23 12h1v1h-1zM24 12h1v1h-1zM28 12h1v1h-1zM31 12h1v1h-1zM4 13h1v1h-1zM5 13h1v1h-1zM9 13h1v1h-1zM13 13h1v1h-1zM14 13h1v1h-1zM15 13h1v1h-1zM17 13h1v1h-1zM20 13h1v1h-1zM21 13h1v1h-1zM24 13h1v1h-1zM26 13h1v1h-1zM29 13h1v1h-1zM32 13h1v1h-1zM4 14h1v1h-1zM5 14h1v1h-1zM7 14h1v1h-1zM9 14h1v1h-1zM10 14h1v1h-1zM11 14h1v1h-1zM13 14h1v1h-1zM16 14h1v1h-1zM18 14h1v1h-1zM21 14h1v1h-1zM24 14h1v1h-1zM25 14h1v1h-1zM26 14h1v1h-1zM30 14h1v1h-1zM31 14h1v1h-1zM32 14h1v1h-1zM7 15h1v1h-1zM8 15h1v1h-1zM9 15h1v1h-1zM11 15h1v1h-1zM17 15h1v1h-1zM18 15h1v1h-1zM20 15h1v1h-1zM21 15h1v1h-1zM22 15h1v1h-1zM23 15h1v1h-1zM24 15h1v1h-1zM25 15h1v1h-1zM28 15h1v1h-1zM31 15h1v1h-1zM5 16h1v1h-1zM9 16h1v1h-1zM10 16h1v1h-1zM11 16h1v1h-1zM13 16h1v1h-1zM14 16h1v1h-1zM18 16h1v1h-1zM19 16h1v1h-1zM20 16h1v1h-1zM21 16h1v1h-1zM24 16h1v1h-1zM25 16h1v1h-1zM26 16h1v1h-1zM29 16h1v1h-1zM31 16h1v1h-1zM32 16h1v1h-1zM7 17h1v1h-1zM8 17h1v1h-1zM9 17h1v1h-1zM11 17h1v1h-1zM15 17h1v1h-1zM16 17h1v1h-1zM18 17h1v1h-1zM24 17h1v1h-1zM25 17h1v1h-1zM26 17h1v1h-1zM29 17h1v1h-1zM32 17h1v1h-1zM5 18h1v1h-1zM6 18h1v1h-1zM8 18h1v1h-1zM10 18h1v1h-1zM11 18h1v1h-1zM12 18h1v1h-1zM15 18h1v1h-1zM16 18h1v1h-1zM17 18h1v1h-1zM22 18h1v1h-1zM27 18h1v1h-1zM28 18h1v1h-1zM29 18h1v1h-1zM31 18h1v1h-1zM32 18h1v1h-1zM5 19h1v1h-1zM6 19h1v1h-1zM7 19h1v1h-1zM8 19h1v1h-1zM9 19h1v1h-1zM12 19h1v1h-1zM13 19h1v1h-1zM14 19h1v1h-1zM20 19h1v1h-1zM21 19h1v1h-1zM22 19h1v1h-1zM23 19h1v1h-1zM24 19h1v1h-1zM27 19h1v1h-1zM29 19h1v1h-1zM31 19h1v1h-1zM6 20h1v1h-1zM7 20h1v1h-1zM10 20h1v1h-1zM12 20h1v1h-1zM13 20h1v1h-1zM14 20h1v1h-1zM16 20h1v1h-1zM19 20h1v1h-1zM20 20h1v1h-1zM21 20h1v1h-1zM24 20h1v1h-1zM25 20h1v1h-1zM26 20h1v1h-1zM29 20h1v1h-1zM31 20h1v1h-1zM32 20h1v1h-1zM6 21h1v1h-1zM7 21h1v1h-1zM8 21h1v1h-1zM11 21h1v1h-1zM14 21h1v1h-1zM16 21h1v1h-1zM17 21h1v1h-1zM20 21h1v1h-1zM21 21h1v1h-1zM22 21h1v1h-1zM24 21h1v1h-1zM25 21h1v1h-1zM26 21h1v1h-1zM29 21h1v1h-1zM30 21h1v1h-1zM32 21h1v1h-1zM4 22h1v1h-1zM6 22h1v1h-1zM10 22h1v1h-1zM13 22h1v1h-1zM15 22h1v1h-1zM18 22h1v1h-1zM26 22h1v1h-1zM27 22h1v1h-1zM31 22h1v1h-1zM32 22h1v1h-1zM5 23h1v1h-1zM6 23h1v1h-1zM8 23h1v1h-1zM12 23h1v1h-1zM13 23h1v1h-1zM16 23h1v1h-1zM17 23h1v1h-1zM18 23h1v1h-1zM19 23h1v1h-1zM21 23h1v1h-1zM23 23h1v1h-1zM24 23h1v1h-1zM27 23h1v1h-1zM29 23h1v1h-1zM31 23h1v1h-1zM4 24h1v1h-1zM7 24h1v1h-1zM9 24h1v1h-1zM10 24h1v1h-1zM11 24h1v1h-1zM13 24h1v1h-1zM18 24h1v1h-1zM19 24h1v1h-1zM20 24h1v1h-1zM21 24h1v1h-1zM23 24h1v1h-1zM24 24h1v1h-1zM25 24h1v1h-1zM26 24h1v1h-1zM27 24h1v1h-1zM28 24h1v1h-1zM12 25h1v1h-1zM13 25h1v1h-1zM18 25h1v1h-1zM20 25h1v1h-1zM23 25h1v1h-1zM24 25h1v1h-1zM28 25h1v1h-1zM30 25h1v1h-1zM31 25h1v1h-1zM32 25h1v1h-1zM4 26h1v1h-1zM5 26h1v1h-1zM6 26h1v1h-1zM7 26h1v1h-1zM8 26h1v1h-1zM9 26h1v1h-1zM10 26h1v1h-1zM13 26h1v1h-1zM15 26h1v1h-1zM16 26h1v1h-1zM17 26h1v1h-1zM20 26h1v1h-1zM22 26h1v1h-1zM23 26h1v1h-1zM24 26h1v1h-1zM26 26h1v1h-1zM28 26h1v1h-1zM29 26h1v1h-1zM31 26h1v1h-1zM32 26h1v1h-1zM4 27h1v1h-1zM10 27h1v1h-1zM13 27h1v1h-1zM14 27h1v1h-1zM15 27h1v1h-1zM16 27h1v1h-1zM20 27h1v1h-1zM21 27h1v1h-1zM24 27h1v1h-1zM28 27h1v1h-1zM29 27h1v1h-1zM4 28h1v1h-1zM6 28h1v1h-1zM7 28h1v1h-1zM8 28h1v1h-1zM10 28h1v1h-1zM12 28h1v1h-1zM14 28h1v1h-1zM16 28h1v1h-1zM19 28h1v1h-1zM20 28h1v1h-1zM21 28h1v1h-1zM24 28h1v1h-1zM25 28h1v1h-1zM26 28h1v1h-1zM27 28h1v1h-1zM28 28h1v1h-1zM31 28h1v1h-1zM32 28h1v1h-1zM4 29h1v1h-1zM6 29h1v1h-1zM7 29h1v1h-1zM8 29h1v1h-1zM10 29h1v1h-1zM16 29h1v1h-1zM17 29h1v1h-1zM21 29h1v1h-1zM22 29h1v1h-1zM24 29h1v1h-1zM28 29h1v1h-1zM30 29h1v1h-1zM31 29h1v1h-1zM32 29h1v1h-1zM4 30h1v1h-1zM6 30h1v1h-1zM7 30h1v1h-1zM8 30h1v1h-1zM10 30h1v1h-1zM12 30h1v1h-1zM15 30h1v1h-1zM16 30h1v1h-1zM20 30h1v1h-1zM23 30h1v1h-1zM27 30h1v1h-1zM28 30h1v1h-1zM29 30h1v1h-1zM32 30h1v1h-1zM4 31h1v1h-1zM10 31h1v1h-1zM16 31h1v1h-1zM17 31h1v1h-1zM18 31h1v1h-1zM21 31h1v1h-1zM22 31h1v1h-1zM23 31h1v1h-1zM24 31h1v1h-1zM28 31h1v1h-1zM31 31h1v1h-1zM4 32h1v1h-1zM5 32h1v1h-1zM6 32h1v1h-1zM7 32h1v1h-1zM8 32h1v1h-1zM9 32h1v1h-1zM10 32h1v1h-1zM12 32h1v1h-1zM13 32h1v1h-1zM16 32h1v1h-1zM17 32h1v1h-1zM20 32h1v1h-1zM21 32h1v1h-1zM23 32h1v1h-1zM24 32h1v1h-1zM25 32h1v1h-1zM28 32h1v1h-1zM31 32h1v1h-1zM32 32h1v1h-1z"/></svg>
       <span class="qr-ov" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Descargar</span>
     </button>
-    </div>
   </div>
   <div class="stats">
     <div class="stat"><b id="yRedes">11+</b><span>años en redes y telecom</span></div>
@@ -360,24 +390,27 @@
     </div>
   </div>
   <div class="rgrid">
-    <div class="rcard"><h4>Switching y core</h4><p>Implementación, configuración y mantenimiento de redes empresariales con Cisco Catalyst, switches de data center Nexus y plataformas cloud-managed Meraki.</p></div>
-    <div class="rcard"><h4>Enrutamiento y redundancia</h4><p>Diseño de redes resilientes con OSPF, BFD y HSRP para conmutación rápida ante fallas, sin puntos únicos en los enlaces críticos.</p></div>
-    <div class="rcard"><h4>Telefonía IP y colaboración</h4><p>Administración integral de Cisco Unified Communications Manager (CUCM), Cisco IM &amp; Presence y Cisco Unity Connection; troncales SIP principal, redundante y de QA.</p></div>
-    <div class="rcard"><h4>Balanceo local (ADC)</h4><p>Configuración avanzada de Citrix NetScaler ADC para distribuir carga entre servidores de aplicaciones.</p></div>
-    <div class="rcard"><h4>GSLB y DNS</h4><p>A10 vThunder en modo GSLB / DNS Server para resolución inteligente de consultas y distribución del tráfico entre centros de datos.</p></div>
-    <div class="rcard"><h4>Seguridad perimetral</h4><p>Implementación y mantenimiento de VPN sobre SonicWall para acceso remoto seguro a los recursos internos.</p></div>
-    <div class="rcard"><h4>Conectividad y operadores</h4><p>Portafolio de servicios de comunicación: SIM de datos para terminales POS, internet dedicado con BGP, Metro-MPLS hacia bancos, enlaces internacionales y sitio alterno.</p></div>
-    <div class="rcard"><h4>Virtualización y laboratorios</h4><p>Proxmox VE y laboratorios en GNS3 para validar arquitecturas y cambios antes de llevarlos a producción.</p></div>
-    <div class="rcard"><h4>Gestión de proyectos</h4><p>Planificación y ejecución de casos complejos y despliegues, coordinación de recursos y proveedores, y cumplimiento de estándares operativos.</p></div>
-    <div class="rcard"><h4>Presupuesto y proveedores</h4><p>Control mensual de facturación, presupuesto anual de servicios de comunicación, altas y bajas de servicios y renegociación de tarifas con ahorro en factura.</p></div>
+    <div class="rcard" tabindex="0"><h4>Switching y core</h4><p>Implementación, configuración y mantenimiento de redes empresariales con Cisco Catalyst, switches de data center Nexus y plataformas cloud-managed Meraki.</p><div class="rpop" role="tooltip"><div class="rk">Qué hago</div><div class="rt">Switching y core</div><ul><li>Configuración de Cisco Catalyst en acceso y distribución: VLANs, trunks y port-channels.</li><li>Switches Nexus en el data center para servidores y almacenamiento.</li><li>Administración de redes Meraki desde la nube: sitios, políticas y monitoreo.</li><li>Mantenimiento preventivo, cambios programados y troubleshooting de capa 2.</li></ul></div></div>
+    <div class="rcard" tabindex="0"><h4>Enrutamiento y redundancia</h4><p>Diseño de redes resilientes con OSPF, BFD y HSRP para conmutación rápida ante fallas, sin puntos únicos en los enlaces críticos.</p><div class="rpop" role="tooltip"><div class="rk">Qué hago</div><div class="rt">Enrutamiento y redundancia</div><ul><li>OSPF como enrutamiento dinámico interno.</li><li>BFD para detectar caídas de enlace en milisegundos.</li><li>HSRP para gateway redundante entre equipos.</li><li>Diseño de rutas alternas para que una falla no corte el servicio.</li></ul></div></div>
+    <div class="rcard" tabindex="0"><h4>Telefonía IP y colaboración</h4><p>Administración integral de Cisco Unified Communications Manager (CUCM), Cisco IM &amp; Presence y Cisco Unity Connection; troncales SIP principal, redundante y de QA.</p><div class="rpop" role="tooltip"><div class="rk">Qué hago</div><div class="rt">Telefonía IP y colaboración</div><ul><li>Cisco CUCM: extensiones, planes de marcación y teléfonos IP.</li><li>Cisco IM &amp; Presence para mensajería y estado de usuarios.</li><li>Cisco Unity Connection: buzones de voz y operadora automática.</li><li>Troncales SIP principal, redundante y de QA, y numeración DID.</li></ul></div></div>
+    <div class="rcard" tabindex="0"><h4>Balanceo local (ADC)</h4><p>Configuración avanzada de Citrix NetScaler ADC para distribuir carga entre servidores de aplicaciones.</p><div class="rpop" role="tooltip"><div class="rk">Qué hago</div><div class="rt">Balanceo local (ADC)</div><ul><li>Citrix NetScaler ADC para repartir carga entre servidores de aplicaciones.</li><li>Servidores virtuales, monitores de salud y persistencia de sesión.</li><li>Retiro de servidores del pool para mantenimiento sin cortar el servicio.</li></ul></div></div>
+    <div class="rcard" tabindex="0"><h4>GSLB y DNS</h4><p>A10 vThunder en modo GSLB / DNS Server para resolución inteligente de consultas y distribución del tráfico entre centros de datos.</p><div class="rpop" role="tooltip"><div class="rk">Qué hago</div><div class="rt">GSLB y DNS</div><ul><li>A10 vThunder en modo GSLB y servidor DNS.</li><li>Respuestas DNS según la salud y disponibilidad de cada centro de datos.</li><li>Conmutación del tráfico al sitio alterno si el principal falla.</li></ul></div></div>
+    <div class="rcard" tabindex="0"><h4>Seguridad perimetral</h4><p>Implementación y mantenimiento de VPN sobre SonicWall para acceso remoto seguro a los recursos internos.</p><div class="rpop" role="tooltip"><div class="rk">Qué hago</div><div class="rt">Seguridad perimetral</div><ul><li>Túneles VPN en SonicWall para acceso remoto del personal.</li><li>Acceso controlado a los recursos internos.</li><li>Mantenimiento y soporte de las conexiones VPN.</li></ul></div></div>
+    <div class="rcard" tabindex="0"><h4>Conectividad y operadores</h4><p>Portafolio de servicios de comunicación: SIM de datos para terminales POS, internet dedicado con BGP, Metro-MPLS hacia bancos, enlaces internacionales y sitio alterno.</p><div class="rpop" role="tooltip"><div class="rk">Qué hago</div><div class="rt">Conectividad y operadores</div><ul><li>SIM de datos para las terminales POS a nivel nacional.</li><li>Internet dedicado con BGP y varios proveedores.</li><li>Enlaces Metro-MPLS principal y redundante hacia bancos (ATM / ACH).</li><li>Enlaces internacionales y conectividad con el sitio alterno.</li></ul></div></div>
+    <div class="rcard" tabindex="0"><h4>Virtualización y laboratorios</h4><p>Proxmox VE y laboratorios en GNS3 para validar arquitecturas y cambios antes de llevarlos a producción.</p><div class="rpop" role="tooltip"><div class="rk">Qué hago</div><div class="rt">Virtualización y laboratorios</div><ul><li>Proxmox VE para servidores y servicios virtualizados.</li><li>Laboratorios en GNS3 que replican la red de producción.</li><li>Prueba de cambios y arquitecturas antes de aplicarlos en producción.</li></ul></div></div>
+    <div class="rcard" tabindex="0"><h4>Gestión de proyectos</h4><p>Planificación y ejecución de casos complejos y despliegues, coordinación de recursos y proveedores, y cumplimiento de estándares operativos.</p><div class="rpop" role="tooltip"><div class="rk">Qué hago</div><div class="rt">Gestión de proyectos</div><ul><li>Planificación de despliegues: alcance, tiempos y ventanas de cambio.</li><li>Coordinación de equipos internos y proveedores.</li><li>Seguimiento de casos complejos hasta su cierre.</li><li>Cumplimiento de estándares operativos y documentación.</li></ul></div></div>
+    <div class="rcard" tabindex="0"><h4>Presupuesto y proveedores</h4><p>Control mensual de facturación, presupuesto anual de servicios de comunicación, altas y bajas de servicios y renegociación de tarifas con ahorro en factura.</p><div class="rpop" role="tooltip"><div class="rk">Qué hago</div><div class="rt">Presupuesto y proveedores</div><ul><li>Control mensual de la facturación de servicios de comunicación.</li><li>Preparación del presupuesto anual del área.</li><li>Altas y bajas de servicios con los operadores.</li><li>Renegociación de tarifas con ahorro en factura.</li></ul></div></div>
   </div>
 </section>
 
 <section>
   <h2>Idiomas e intereses</h2>
-  <div class="tags">
-    <span>Español · nativo</span><span>Inglés · básico</span><span>Basketball</span><span>Música cristiana</span>
-  </div>
+  <div class="langs">
+      <div class="lang"><svg class="flag" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><rect width="13" height="8" fill="#002D62"/><rect x="17" width="13" height="8" fill="#CE1126"/><rect y="12" width="13" height="8" fill="#CE1126"/><rect x="17" y="12" width="13" height="8" fill="#002D62"/><rect x="13.6" y="8.6" width="2.8" height="2.8" rx=".4" fill="#0a7c3a"/></svg><div><b>Español</b><small>Nativo</small></div><span class="lvl" role="img" aria-label="Nivel nativo, 5 de 5"><i class=on></i><i class=on></i><i class=on></i><i class=on></i><i class=on></i></span></div>
+      <div class="lang"><svg class="flag" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#B22234"/><g fill="#fff"><rect y="1.54" width="30" height="1.54"/><rect y="4.62" width="30" height="1.54"/><rect y="7.7" width="30" height="1.54"/><rect y="10.78" width="30" height="1.54"/><rect y="13.86" width="30" height="1.54"/><rect y="16.94" width="30" height="1.54"/></g><rect width="13" height="10.78" fill="#3C3B6E"/><g fill="#fff"><circle cx="2.2" cy="2" r=".55"/><circle cx="5.2" cy="2" r=".55"/><circle cx="8.2" cy="2" r=".55"/><circle cx="11.2" cy="2" r=".55"/><circle cx="3.7" cy="4" r=".55"/><circle cx="6.7" cy="4" r=".55"/><circle cx="9.7" cy="4" r=".55"/><circle cx="2.2" cy="6" r=".55"/><circle cx="5.2" cy="6" r=".55"/><circle cx="8.2" cy="6" r=".55"/><circle cx="11.2" cy="6" r=".55"/><circle cx="3.7" cy="8" r=".55"/><circle cx="6.7" cy="8" r=".55"/><circle cx="9.7" cy="8" r=".55"/></g></svg><div><b>Inglés</b><small>Básico</small></div><span class="lvl" role="img" aria-label="Nivel básico, 2 de 5"><i class=on></i><i class=on></i><i></i><i></i><i></i></span></div>
+      <div class="lang int"><svg class="iico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3v18M5.6 5.6c3.2 3 3.2 9.8 0 12.8M18.4 5.6c-3.2 3-3.2 9.8 0 12.8"/></svg><div><b>Basketball</b><small>Deporte</small></div></div>
+      <div class="lang int"><svg class="iico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg><div><b>Música cristiana</b><small>Interés</small></div></div>
+    </div>
 </section>
 </div>
 
@@ -560,9 +593,23 @@
 </section>
 </div>
 
-<div class="page" data-page="certificaciones" hidden>
+<div class="page" data-page="educacion" hidden>
 <section>
-  <h2>Certificaciones</h2>
+  <h2>Educación y certificaciones</h2>
+  <div class="etabs" role="tablist" aria-label="Educación y certificaciones">
+    <button class="etab" role="tab" id="et-edu" aria-controls="ep-edu" aria-selected="true" data-t="edu"><span class="tn">Educación</span><span class="tr">Título universitario y cursos</span></button>
+    <button class="etab" role="tab" id="et-cert" aria-controls="ep-cert" aria-selected="false" tabindex="-1" data-t="cert"><span class="tn">Certificaciones</span><span class="tr">CCNA, Collaboration, Linux y Cisco NetAcad</span></button>
+  </div>
+  <div class="epanel" id="ep-edu" role="tabpanel" aria-labelledby="et-edu">
+  <div class="certs">
+    <div class="cert" tabindex="0"><div class="cicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5M22 9v6"/></svg></div><div><b>Ingeniería en Sistemas / Informática</b><span>Universidad Dominicana O&amp;M · 2006 – 2012</span></div><div class="cpop" role="tooltip"><div class="diploma"><div class="dk">Título / Curso</div><div class="dicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5M22 9v6"/></svg></div><div class="dn">Ingeniería en Sistemas / Informática</div><div class="dd">Universidad Dominicana O&amp;M · 2006 – 2012</div><div class="dto">Carlos Antonio Santiago Medina</div></div><a class="dlink" href="https://www.linkedin.com/in/csantiagomedina/details/education/" target="_blank" rel="noopener">Ver en LinkedIn →</a></div></div>
+    <div class="cert" tabindex="0"><div class="cicon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01M7 16.5h.01M11 7.5h6M11 16.5h6"/></svg></div><div><b>Issabel PBX Básico</b><span>Canó Academy · 2023</span></div><div class="cpop" role="tooltip"><div class="diploma"><div class="dk">Título / Curso</div><div class="dicon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01M7 16.5h.01M11 7.5h6M11 16.5h6"/></svg></div><div class="dn">Issabel PBX Básico</div><div class="dd">Canó Academy · 2023</div><div class="dto">Carlos Antonio Santiago Medina</div></div><a class="dlink" href="https://www.linkedin.com/in/csantiagomedina/details/education/" target="_blank" rel="noopener">Ver en LinkedIn →</a></div></div>
+    <div class="cert" tabindex="0"><div class="cicon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h3"/><circle cx="16" cy="16" r="1"/></svg></div><div><b>Windows Server 2022</b><span>Administración de sistemas · 2023</span></div><div class="cpop" role="tooltip"><div class="diploma"><div class="dk">Título / Curso</div><div class="dicon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h3"/><circle cx="16" cy="16" r="1"/></svg></div><div class="dn">Windows Server 2022</div><div class="dd">Administración de sistemas · 2023</div><div class="dto">Carlos Antonio Santiago Medina</div></div><a class="dlink" href="https://www.linkedin.com/in/csantiagomedina/details/education/" target="_blank" rel="noopener">Ver en LinkedIn →</a></div></div>
+    <div class="cert" tabindex="0"><div class="cicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div><div><b>OPNsense Firewall</b><span>Seguridad informática · 2023</span></div><div class="cpop" role="tooltip"><div class="diploma"><div class="dk">Título / Curso</div><div class="dicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div><div class="dn">OPNsense Firewall</div><div class="dd">Seguridad informática · 2023</div><div class="dto">Carlos Antonio Santiago Medina</div></div><a class="dlink" href="https://www.linkedin.com/in/csantiagomedina/details/education/" target="_blank" rel="noopener">Ver en LinkedIn →</a></div></div>
+    <div class="cert" tabindex="0"><div class="cicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg></div><div><b>Implementación de Lync Server 2013</b><span>Centrales telefónicas · 2015</span></div><div class="cpop" role="tooltip"><div class="diploma"><div class="dk">Título / Curso</div><div class="dicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg></div><div class="dn">Implementación de Lync Server 2013</div><div class="dd">Centrales telefónicas · 2015</div><div class="dto">Carlos Antonio Santiago Medina</div></div><a class="dlink" href="https://www.linkedin.com/in/csantiagomedina/details/education/" target="_blank" rel="noopener">Ver en LinkedIn →</a></div></div>
+  </div>
+  </div>
+  <div class="epanel" id="ep-cert" role="tabpanel" aria-labelledby="et-cert" hidden>
   <div class="certs">
     <div class="cert" tabindex="0"><div class="cicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></div><div><b>CCNA Collaboration (VoIP)</b><span>Certy Academy · 2019</span></div><div class="cpop" role="tooltip"><div class="diploma"><div class="dk">Certificación</div><div class="dicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></div><div class="dn">CCNA Collaboration (VoIP)</div><div class="dd">Certy Academy · 2019</div><div class="dto">Carlos Antonio Santiago Medina</div></div><a class="dlink" href="https://www.linkedin.com/in/csantiagomedina/details/certifications/" target="_blank" rel="noopener">Ver en LinkedIn →</a></div></div>
     <div class="cert" tabindex="0"><div class="cicon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.2"/><circle cx="5" cy="18" r="2.2"/><circle cx="19" cy="18" r="2.2"/><path d="M12 7.2v4.3M12 11.5L6.4 16.3M12 11.5l5.6 4.8"/></svg></div><div><b>Cisco Certified Network Associate (CCNA)</b><span>EXAE · 2014</span></div><div class="cpop" role="tooltip"><div class="diploma"><div class="dk">Certificación</div><div class="dicon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.2"/><circle cx="5" cy="18" r="2.2"/><circle cx="19" cy="18" r="2.2"/><path d="M12 7.2v4.3M12 11.5L6.4 16.3M12 11.5l5.6 4.8"/></svg></div><div class="dn">Cisco Certified Network Associate (CCNA)</div><div class="dd">EXAE · 2014</div><div class="dto">Carlos Antonio Santiago Medina</div></div><a class="dlink" href="https://www.linkedin.com/in/csantiagomedina/details/certifications/" target="_blank" rel="noopener">Ver en LinkedIn →</a></div></div>
@@ -571,18 +618,6 @@
     <div class="cert" tabindex="0"><div class="cicon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 17h.01M11 17h.01M12 14V9M8 6a6 6 0 0 1 8 0M5.5 3.5a10 10 0 0 1 13 0"/></svg></div><div><b>Networking Basics</b><span>Cisco Networking Academy</span></div><div class="cpop" role="tooltip"><div class="diploma"><div class="dk">Certificación</div><div class="dicon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 17h.01M11 17h.01M12 14V9M8 6a6 6 0 0 1 8 0M5.5 3.5a10 10 0 0 1 13 0"/></svg></div><div class="dn">Networking Basics</div><div class="dd">Cisco Networking Academy</div><div class="dto">Carlos Antonio Santiago Medina</div></div><a class="dlink" href="https://www.linkedin.com/in/csantiagomedina/details/certifications/" target="_blank" rel="noopener">Ver en LinkedIn →</a></div></div>
     <div class="cert" tabindex="0"><div class="cicon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="13" rx="2"/><path d="M8 21h8M12 16v5M7 11l3-3 2 2 4-4"/></svg></div><div><b>Introduction to Packet Tracer</b><span>Cisco Networking Academy</span></div><div class="cpop" role="tooltip"><div class="diploma"><div class="dk">Certificación</div><div class="dicon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="13" rx="2"/><path d="M8 21h8M12 16v5M7 11l3-3 2 2 4-4"/></svg></div><div class="dn">Introduction to Packet Tracer</div><div class="dd">Cisco Networking Academy</div><div class="dto">Carlos Antonio Santiago Medina</div></div><a class="dlink" href="https://www.linkedin.com/in/csantiagomedina/details/certifications/" target="_blank" rel="noopener">Ver en LinkedIn →</a></div></div>
   </div>
-</section>
-</div>
-
-<div class="page" data-page="educacion" hidden>
-<section>
-  <h2>Educación</h2>
-  <div class="certs">
-    <div class="cert" tabindex="0"><div class="cicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5M22 9v6"/></svg></div><div><b>Ingeniería en Sistemas / Informática</b><span>Universidad Dominicana O&amp;M · 2006 – 2012</span></div><div class="cpop" role="tooltip"><div class="diploma"><div class="dk">Título / Curso</div><div class="dicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5M22 9v6"/></svg></div><div class="dn">Ingeniería en Sistemas / Informática</div><div class="dd">Universidad Dominicana O&amp;M · 2006 – 2012</div><div class="dto">Carlos Antonio Santiago Medina</div></div><a class="dlink" href="https://www.linkedin.com/in/csantiagomedina/details/education/" target="_blank" rel="noopener">Ver en LinkedIn →</a></div></div>
-    <div class="cert" tabindex="0"><div class="cicon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01M7 16.5h.01M11 7.5h6M11 16.5h6"/></svg></div><div><b>Issabel PBX Básico</b><span>Canó Academy · 2023</span></div><div class="cpop" role="tooltip"><div class="diploma"><div class="dk">Título / Curso</div><div class="dicon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01M7 16.5h.01M11 7.5h6M11 16.5h6"/></svg></div><div class="dn">Issabel PBX Básico</div><div class="dd">Canó Academy · 2023</div><div class="dto">Carlos Antonio Santiago Medina</div></div><a class="dlink" href="https://www.linkedin.com/in/csantiagomedina/details/education/" target="_blank" rel="noopener">Ver en LinkedIn →</a></div></div>
-    <div class="cert" tabindex="0"><div class="cicon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h3"/><circle cx="16" cy="16" r="1"/></svg></div><div><b>Windows Server 2022</b><span>Administración de sistemas · 2023</span></div><div class="cpop" role="tooltip"><div class="diploma"><div class="dk">Título / Curso</div><div class="dicon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h3"/><circle cx="16" cy="16" r="1"/></svg></div><div class="dn">Windows Server 2022</div><div class="dd">Administración de sistemas · 2023</div><div class="dto">Carlos Antonio Santiago Medina</div></div><a class="dlink" href="https://www.linkedin.com/in/csantiagomedina/details/education/" target="_blank" rel="noopener">Ver en LinkedIn →</a></div></div>
-    <div class="cert" tabindex="0"><div class="cicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div><div><b>OPNsense Firewall</b><span>Seguridad informática · 2023</span></div><div class="cpop" role="tooltip"><div class="diploma"><div class="dk">Título / Curso</div><div class="dicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div><div class="dn">OPNsense Firewall</div><div class="dd">Seguridad informática · 2023</div><div class="dto">Carlos Antonio Santiago Medina</div></div><a class="dlink" href="https://www.linkedin.com/in/csantiagomedina/details/education/" target="_blank" rel="noopener">Ver en LinkedIn →</a></div></div>
-    <div class="cert" tabindex="0"><div class="cicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg></div><div><b>Implementación de Lync Server 2013</b><span>Centrales telefónicas · 2015</span></div><div class="cpop" role="tooltip"><div class="diploma"><div class="dk">Título / Curso</div><div class="dicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg></div><div class="dn">Implementación de Lync Server 2013</div><div class="dd">Centrales telefónicas · 2015</div><div class="dto">Carlos Antonio Santiago Medina</div></div><a class="dlink" href="https://www.linkedin.com/in/csantiagomedina/details/education/" target="_blank" rel="noopener">Ver en LinkedIn →</a></div></div>
   </div>
 </section>
 </div>
@@ -944,14 +979,22 @@
 (function(){
   var pages=document.querySelectorAll('.page'), links=document.querySelectorAll('[data-nav]');
   var names=Array.prototype.map.call(pages,function(p){return p.dataset.page;});
-  function show(){
-    var h=(location.hash||'#inicio').slice(1); if(names.indexOf(h)<0) h='inicio';
+  function show(h,push){
+    if(names.indexOf(h)<0) h='inicio';
     pages.forEach(function(p){ p.hidden=p.dataset.page!==h; });
     links.forEach(function(a){ if(a.dataset.nav===h) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
+    if(push){ try{ history.pushState({p:h},'','#'+h); }catch(e){} }
     window.scrollTo(0,0);
     document.dispatchEvent(new Event('pagechange'));
   }
-  window.addEventListener('hashchange',show); show();
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    var h=a.getAttribute('href').slice(1);
+    if(names.indexOf(h)<0) return;
+    a.addEventListener('click',function(e){ e.preventDefault(); show(h,true); });
+  });
+  window.addEventListener('popstate',function(){ show((location.hash||'#inicio').slice(1),false); });
+  window.addEventListener('hashchange',function(){ show((location.hash||'#inicio').slice(1),false); });
+  show((location.hash||'#inicio').slice(1),false);
 })();
 </script>
 <script>
@@ -975,6 +1018,18 @@
     };
     img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(xml);
   });
+})();
+</script>
+<script>
+(function(){
+  var tabs=document.querySelectorAll('.etab');
+  function sel(k,focus){ tabs.forEach(function(b){ var on=b.dataset.t===k; b.setAttribute('aria-selected',on); b.tabIndex=on?0:-1; document.getElementById(b.getAttribute('aria-controls')).hidden=!on; if(on&&focus) b.focus(); }); }
+  tabs.forEach(function(b,i){
+    b.addEventListener('click',function(){ sel(b.dataset.t); });
+    b.addEventListener('keydown',function(e){ if(e.key==='ArrowRight'||e.key==='ArrowLeft'){ e.preventDefault(); sel(tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length].dataset.t,true); } });
+  });
+  function fromHash(){ if(location.hash==='#certificaciones'){ document.querySelector('a[data-nav=educacion]').click(); sel('cert'); } }
+  window.addEventListener('hashchange',fromHash); fromHash();
 })();
 </script>
 </body>
