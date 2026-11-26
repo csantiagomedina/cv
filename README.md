@@ -1,3 +1,5 @@
+<img src="foto.jpg" alt="Carlos Santiago" width="130" align="right">
+
 ## <picture><img src="https://raw.githubusercontent.com/7oSkaaa/7oSkaaa/main/Images/about_me.gif" width="50px"></picture> Carlos Santiago — Hoja de vida
 
 👨‍💻 **Especialista en Redes y Sistemas · Arquitectura de Conectividad, Alta Disponibilidad y Entornos Virtuales** · 
