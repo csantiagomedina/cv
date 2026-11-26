@@ -18,6 +18,7 @@ Este GitHub acompaña el contenido publicado en mi canal de YouTube, donde expli
 
 👨‍💻 Especialista en Redes y Sistemas · Líder de Proyecto de Redes y VoIP en CardNET 📍 Santo Domingo, República Dominicana
 
+https://img.shields.io/badge/Cisco-1BA0D7?style=flat&logo=cisco&logoColor=white
 Redes Cisco (Catalyst, Nexus, Meraki), voz IP (CUCM), alta disponibilidad (OSPF, BFD, HSRP, GSLB), Linux y Proxmox VE.
 
 📄 Ver CV completo: 👉 csantiagomedina.github.io/cv
