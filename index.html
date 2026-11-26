@@ -19,7 +19,7 @@
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6}
   a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
-  .wrap{max-width:880px;margin:0 auto;padding:0 16px}
+  .wrap{max-width:1760px;margin:0 auto;padding-left:max(clamp(16px,2.2vw,40px),env(safe-area-inset-left,0px));padding-right:max(clamp(16px,2.2vw,40px),env(safe-area-inset-right,0px))}
   header{padding:24px 0 32px;border-bottom:1px solid var(--line)}
   .banner{position:relative;height:220px;border-radius:12px 12px 0 0;overflow:hidden;
     background:#06121f;background-image:
@@ -61,7 +61,7 @@
   .stat{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px}
   .stat b{display:block;font-family:var(--mono);font-size:1.5rem;color:var(--accent)}
   .stat span{font-size:.85rem;color:var(--muted)}
-  section{padding:36px 0;border-bottom:1px solid var(--line)}
+  section{padding-block:44px;border-bottom:1px solid var(--line);scroll-margin-top:64px}
   h2{font-family:var(--mono);font-size:1rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin:0 0 18px}
   h2::before{content:"# ";opacity:.6}
   .job{position:relative;padding-left:22px;margin-bottom:28px;border-left:2px solid var(--line)}
@@ -77,23 +77,23 @@
   .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   .item{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px}
   .item b{display:block} .item span{font-size:.88rem;color:var(--muted)}
-  .proj{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .pcard{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}
-  .pcard.wide{grid-column:1/-1}
-  .ptop{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
-  .pcard h3{margin:0;font-size:1.02rem}
-  .kpi{font-family:var(--mono);font-weight:600;color:var(--accent);background:var(--accent-soft);padding:2px 8px;border-radius:4px;white-space:nowrap;font-size:.9rem}
-  .pcard p{font-size:.9rem;color:var(--muted);margin:8px 0 10px}
-  .chart{width:100%;height:auto;display:block}
-  .chart .ax{stroke:var(--line)}
-  .chart .bar{fill:var(--accent);opacity:.45} .chart .bar.hl{opacity:1} .chart .bar.ghost{fill:var(--muted);opacity:.35}
-  .chart text{font-family:var(--mono);fill:var(--muted);font-size:11px}
-  .chart .lb,.chart .vl{text-anchor:middle} .chart .vl{fill:var(--text);font-size:10px}
-  .chart .lb2{font-size:11px;fill:var(--text)} .chart .vl2{fill:var(--accent);font-weight:600}
-  .legend{display:flex;gap:16px;font-size:.8rem;color:var(--muted);margin-top:6px}
-  .legend i{display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--accent);margin-right:6px;vertical-align:middle}
-  .legend i.ghost{background:var(--muted);opacity:.5}
-  @media (max-width:640px){.proj{grid-template-columns:1fr}}
+  html{scroll-behavior:smooth}
+  .top{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+  .top .wrap{display:flex;align-items:center;gap:24px;min-height:56px}
+  .brand{font-weight:700;color:var(--text);white-space:nowrap}
+  .brand span{color:var(--accent)}
+  .nav{display:flex;gap:20px;overflow-x:auto;margin-left:auto;min-width:0;scrollbar-width:none}
+  .nav::-webkit-scrollbar{display:none}
+  .nav a{font-size:.9rem;color:var(--muted);white-space:nowrap;padding-block:16px}
+  .nav a:hover{color:var(--text);text-decoration:none}
+  .banner{height:260px}
+  @media (min-width:1100px){
+    #experiencia .jobs{display:grid;grid-template-columns:1fr 1fr;column-gap:48px}
+    .grid{grid-template-columns:repeat(3,1fr)}
+    .stats{max-width:900px}
+  }
+  @media (min-width:1500px){ .grid{grid-template-columns:repeat(4,1fr)} }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   footer{padding:28px 0 48px;font-size:.85rem;color:var(--muted);font-family:var(--mono)}
   @media (max-width:640px){
     h1{font-size:1.9rem} .stats,.grid{grid-template-columns:1fr}
@@ -102,6 +102,14 @@
 </style>
 </head>
 <body>
+<nav class="top" aria-label="Secciones">
+  <div class="wrap">
+    <a class="brand" href="#">Carlos <span>Santiago</span></a>
+    <div class="nav">
+      <a href="#perfil">Perfil</a><a href="#experiencia">Experiencia</a><a href="#servicios">Servicios</a><a href="#habilidades">Habilidades</a><a href="#certificaciones">Certificaciones</a><a href="#educacion">Educación</a>
+    </div>
+  </div>
+</nav>
 <div class="wrap">
 
 <header>
@@ -138,16 +146,17 @@
   </div>
 </header>
 
-<section>
+<section id="perfil">
   <h2>Perfil</h2>
   <p>Trabajo en infraestructura corporativa: que la red funcione estable, segura y sin cortes. Diseño redes resilientes, manejo enrutamiento dinámico (OSPF, BFD, HSRP) y administro entornos virtualizados.</p>
   <p>Administro servidores Linux y Proxmox VE. Resuelvo fallas desde la raíz: logs, depuración paso a paso y laboratorios virtuales para validar arquitecturas antes de llevarlas a producción.</p>
 </section>
 
-<section>
+<section id="experiencia">
   <h2>Experiencia</h2>
   <div class="company"><b>Consorcio de Tarjetas Dominicanas (CardNET)</b> · Santo Domingo · Oct 2009 – Actualidad</div>
 
+  <div class="jobs">
   <div class="job">
     <h3>Líder de Proyecto</h3>
     <div class="meta">Abr 2019 – Actualidad · Santo Domingo</div>
@@ -204,44 +213,10 @@
       <li><b>Precisión:</b> verificación de registros para cumplir controles operativos y normativos internos.</li>
     </ul>
   </div>
-</section>
-
-<section>
-  <h2>Proyectos</h2>
-  <p style="margin:0 0 16px;color:var(--muted)">Resultados de proyectos de telecomunicaciones en CardNET. Valores en porcentaje o índice; los montos son confidenciales.</p>
-  <div class="proj">
-    <article class="pcard">
-      <div class="ptop"><h3>Renegociación de tarifas SIM POS</h3><span class="kpi">−51%</span></div>
-      <p>Unifiqué la tarifa por SIM de datos de las terminales POS con los tres operadores móviles. Antes había hasta 5 tarifas distintas por operador.</p>
-      <svg class="chart" viewBox="0 0 420 142" role="img"><text class="lb2" x="0" y="18">Operador A</text><rect class="bar ghost" x="80" y="8" width="290.0" height="13" rx="3"/><rect class="bar hl" x="80" y="24" width="152.0" height="13" rx="3"/><text class="vl2" x="238.0" y="35">-48%</text><text class="lb2" x="0" y="62">Operador B</text><rect class="bar ghost" x="80" y="52" width="290.0" height="13" rx="3"/><rect class="bar hl" x="80" y="68" width="119.2" height="13" rx="3"/><text class="vl2" x="205.2" y="79">-59%</text><text class="lb2" x="0" y="106">Operador C</text><rect class="bar ghost" x="80" y="96" width="290.0" height="13" rx="3"/><rect class="bar hl" x="80" y="112" width="152.5" height="13" rx="3"/><text class="vl2" x="238.5" y="123">-47%</text></svg>
-      <div class="legend"><span><i class="ghost"></i>Factura anterior</span><span><i></i>Factura con nueva tarifa</span></div>
-    </article>
-    <article class="pcard">
-      <div class="ptop"><h3>Expansión del parque de POS</h3><span class="kpi">+6.8%</span></div>
-      <p>Altas mensuales de SIM para nuevas terminales en todo el país durante 2026, sin interrupción del servicio. Índice base enero = 100.</p>
-      <svg class="chart" viewBox="0 0 420 170" role="img"><line x1="8" y1="148" x2="412" y2="148" class="ax"/><rect class="bar" x="17.6" y="122.0" width="31.3" height="26.0" rx="3"/><text class="lb" x="33.2" y="164">Ene</text><text class="vl" x="33.2" y="117.0">100.0</text><rect class="bar" x="68.1" y="117.1" width="31.3" height="30.9" rx="3"/><text class="lb" x="83.8" y="164">Feb</text><text class="vl" x="83.8" y="112.1">100.4</text><rect class="bar" x="118.6" y="102.2" width="31.3" height="45.8" rx="3"/><text class="lb" x="134.2" y="164">Mar</text><text class="vl" x="134.2" y="97.2">101.5</text><rect class="bar" x="169.1" y="87.4" width="31.3" height="60.6" rx="3"/><text class="lb" x="184.8" y="164">Abr</text><text class="vl" x="184.8" y="82.4">102.7</text><rect class="bar" x="219.6" y="77.6" width="31.3" height="70.4" rx="3"/><text class="lb" x="235.2" y="164">May</text><text class="vl" x="235.2" y="72.6">103.4</text><rect class="bar" x="270.1" y="62.7" width="31.3" height="85.3" rx="3"/><text class="lb" x="285.8" y="164">Jun</text><text class="vl" x="285.8" y="57.7">104.6</text><rect class="bar" x="320.6" y="43.0" width="31.3" height="105.0" rx="3"/><text class="lb" x="336.2" y="164">Jul</text><text class="vl" x="336.2" y="38.0">106.1</text><rect class="bar hl" x="371.1" y="33.1" width="31.3" height="114.9" rx="3"/><text class="lb" x="386.8" y="164">Ago</text><text class="vl" x="386.8" y="28.1">106.8</text></svg>
-    </article>
-    <article class="pcard">
-      <div class="ptop"><h3>Internet para tiendas y teletrabajo</h3><span class="kpi">+10%</span></div>
-      <p>Habilitación de internet fijo en nuevas tiendas y conexiones home office del personal, con tres proveedores. Índice de sitios, base enero = 100.</p>
-      <svg class="chart" viewBox="0 0 420 170" role="img"><line x1="8" y1="148" x2="412" y2="148" class="ax"/><rect class="bar" x="17.6" y="109.8" width="31.3" height="38.2" rx="3"/><text class="lb" x="33.2" y="164">Ene</text><text class="vl" x="33.2" y="104.8">100</text><rect class="bar" x="68.1" y="100.0" width="31.3" height="48.0" rx="3"/><text class="lb" x="83.8" y="164">Feb</text><text class="vl" x="83.8" y="95.0">101</text><rect class="bar" x="118.6" y="60.7" width="31.3" height="87.3" rx="3"/><text class="lb" x="134.2" y="164">Mar</text><text class="vl" x="134.2" y="55.7">106</text><rect class="bar" x="169.1" y="31.3" width="31.3" height="116.7" rx="3"/><text class="lb" x="184.8" y="164">Abr</text><text class="vl" x="184.8" y="26.3">110</text><rect class="bar hl" x="219.6" y="21.5" width="31.3" height="126.5" rx="3"/><text class="lb" x="235.2" y="164">May</text><text class="vl" x="235.2" y="16.5">112</text><rect class="bar hl" x="270.1" y="21.5" width="31.3" height="126.5" rx="3"/><text class="lb" x="285.8" y="164">Jun</text><text class="vl" x="285.8" y="16.5">112</text><rect class="bar" x="320.6" y="41.1" width="31.3" height="106.9" rx="3"/><text class="lb" x="336.2" y="164">Jul</text><text class="vl" x="336.2" y="36.1">109</text><rect class="bar" x="371.1" y="31.3" width="31.3" height="116.7" rx="3"/><text class="lb" x="386.8" y="164">Ago</text><text class="vl" x="386.8" y="26.3">110</text></svg>
-    </article>
-    <article class="pcard">
-      <div class="ptop"><h3>Despliegue GPON en sucursales</h3><span class="kpi">6 sitios</span></div>
-      <p>Migración de sucursales a fibra GPON empresarial durante 2024. Sitios conectados por mes.</p>
-      <svg class="chart" viewBox="0 0 420 170" role="img"><line x1="8" y1="148" x2="412" y2="148" class="ax"/><rect class="bar" x="14.4" y="148.0" width="20.9" height="0.0" rx="3"/><text class="lb" x="24.8" y="164">E</text><text class="vl" x="24.8" y="143.0"></text><rect class="bar" x="48.1" y="148.0" width="20.9" height="0.0" rx="3"/><text class="lb" x="58.5" y="164">F</text><text class="vl" x="58.5" y="143.0"></text><rect class="bar" x="81.7" y="148.0" width="20.9" height="0.0" rx="3"/><text class="lb" x="92.2" y="164">M</text><text class="vl" x="92.2" y="143.0"></text><rect class="bar" x="115.4" y="129.4" width="20.9" height="18.6" rx="3"/><text class="lb" x="125.8" y="164">A</text><text class="vl" x="125.8" y="124.4">1</text><rect class="bar" x="149.1" y="129.4" width="20.9" height="18.6" rx="3"/><text class="lb" x="159.5" y="164">M</text><text class="vl" x="159.5" y="124.4">1</text><rect class="bar" x="182.7" y="110.9" width="20.9" height="37.1" rx="3"/><text class="lb" x="193.2" y="164">J</text><text class="vl" x="193.2" y="105.9">2</text><rect class="bar" x="216.4" y="110.9" width="20.9" height="37.1" rx="3"/><text class="lb" x="226.8" y="164">J</text><text class="vl" x="226.8" y="105.9">2</text><rect class="bar hl" x="250.1" y="36.6" width="20.9" height="111.4" rx="3"/><text class="lb" x="260.5" y="164">A</text><text class="vl" x="260.5" y="31.6">6</text><rect class="bar" x="283.7" y="36.6" width="20.9" height="111.4" rx="3"/><text class="lb" x="294.2" y="164">S</text><text class="vl" x="294.2" y="31.6">6</text><rect class="bar" x="317.4" y="36.6" width="20.9" height="111.4" rx="3"/><text class="lb" x="327.8" y="164">O</text><text class="vl" x="327.8" y="31.6">6</text><rect class="bar" x="351.1" y="36.6" width="20.9" height="111.4" rx="3"/><text class="lb" x="361.5" y="164">N</text><text class="vl" x="361.5" y="31.6">6</text><rect class="bar" x="384.7" y="36.6" width="20.9" height="111.4" rx="3"/><text class="lb" x="395.2" y="164">D</text><text class="vl" x="395.2" y="31.6">6</text></svg>
-    </article>
-    <article class="pcard wide">
-      <div class="ptop"><h3>Redundancia de voz y enlaces bancarios</h3><span class="kpi">Alta disponibilidad</span></div>
-      <p>Diseño de conectividad sin dependencia de un solo proveedor ni un solo enlace.</p>
-      <div class="tags">
-        <span>3 troncales SIP: principal, redundante y QA</span><span>Metro-MPLS principal + redundante hacia bancos (ATM / ACH)</span><span>Internet dedicado con BGP y 4 proveedores</span><span>Sitio alterno internacional (DRP)</span>
-      </div>
-    </article>
   </div>
 </section>
 
-<section>
+<section id="servicios">
   <h2>Servicios de telecom que gestiono</h2>
   <p style="margin:0 0 16px;color:var(--muted)">Portafolio de comunicaciones a mi cargo en CardNET: diseño, contratación, operación y control de costos.</p>
   <div class="grid">
@@ -256,7 +231,7 @@
   </div>
 </section>
 
-<section>
+<section id="habilidades">
   <h2>Habilidades</h2>
   <div class="group"><h4>Redes</h4><div class="tags">
     <span>Cisco Catalyst</span><span>Cisco Nexus</span><span>Meraki</span><span>OSPF</span><span>BFD</span><span>HSRP</span><span>VLANs</span><span>Routing</span><span>Switching</span>
@@ -275,7 +250,7 @@
   </div></div>
 </section>
 
-<section>
+<section id="certificaciones">
   <h2>Certificaciones</h2>
   <div class="grid">
     <div class="item"><b>CCNA Collaboration (VoIP)</b><span>Certy Academy · 2019</span></div>
@@ -287,7 +262,7 @@
   </div>
 </section>
 
-<section>
+<section id="educacion">
   <h2>Educación</h2>
   <div class="grid">
     <div class="item"><b>Ingeniería en Sistemas / Informática</b><span>Universidad Dominicana O&amp;M · 2006 – 2012</span></div>
@@ -298,7 +273,7 @@
   </div>
 </section>
 
-<section>
+<section id="idiomas">
   <h2>Idiomas e intereses</h2>
   <div class="tags">
     <span>Español · nativo</span><span>Inglés · básico</span><span>Basketball</span><span>Música cristiana</span>
