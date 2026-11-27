@@ -1145,7 +1145,8 @@ document.querySelectorAll('.etab .cnt').forEach(function(c){ var n=document.getE
 <script>
 (function(){
   // evita que la página se muestre dentro de otro sitio (clickjacking)
-  try{ if(window.top!==window.self){ window.top.location=window.self.location; } }catch(e){ document.documentElement.style.display='none'; }
+  // solo en el sitio publicado; así la vista previa (que usa un marco) sigue funcionando
+  if(/github\.io$/.test(location.hostname) && window.top!==window.self){ try{ window.top.location.replace(location.href); }catch(e){} }
   var prot='img,svg image,.cert,.cicon,.cpop,.avwrap,.avfull,.banner,.diploma';
   document.addEventListener('contextmenu',function(e){ if(e.target.closest(prot)) e.preventDefault(); });
   document.addEventListener('dragstart',function(e){ if(e.target.closest('img,.cert,.avwrap,.banner')) e.preventDefault(); });
