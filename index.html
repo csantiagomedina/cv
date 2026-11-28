@@ -6,7 +6,7 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Carlos Santiago | Redes y Sistemas</title>
+<title>Demo · Carlos Santiago | Redes y Sistemas</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Crect%20width%3D%2764%27%20height%3D%2764%27%20rx%3D%2714%27%20fill%3D%27%231565c0%27/%3E%3Cg%20stroke%3D%27%23fff%27%20stroke-width%3D%273.5%27%20fill%3D%27none%27%20stroke-linecap%3D%27round%27%3E%3Cpath%20d%3D%27M32%2022v9M32%2031L18%2042M32%2031l14%2011%27/%3E%3C/g%3E%3Cg%20fill%3D%27%23fff%27%3E%3Crect%20x%3D%2724%27%20y%3D%2710%27%20width%3D%2716%27%20height%3D%2712%27%20rx%3D%273%27/%3E%3Crect%20x%3D%279%27%20y%3D%2742%27%20width%3D%2718%27%20height%3D%2712%27%20rx%3D%273%27/%3E%3Crect%20x%3D%2737%27%20y%3D%2742%27%20width%3D%2718%27%20height%3D%2712%27%20rx%3D%273%27/%3E%3C/g%3E%3Cg%20fill%3D%27%231565c0%27%3E%3Ccircle%20cx%3D%2729%27%20cy%3D%2716%27%20r%3D%271.6%27/%3E%3Ccircle%20cx%3D%2735%27%20cy%3D%2716%27%20r%3D%271.6%27/%3E%3Ccircle%20cx%3D%2714%27%20cy%3D%2748%27%20r%3D%271.6%27/%3E%3Ccircle%20cx%3D%2742%27%20cy%3D%2748%27%20r%3D%271.6%27/%3E%3C/g%3E%3C/svg%3E">
 <meta name="description" content="Carlos Santiago, especialista en redes y sistemas. Cisco, VoIP, alta disponibilidad, Linux y virtualización. Santo Domingo, República Dominicana.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -701,6 +701,55 @@
   .rgrid.g4>.rcard:nth-child(4n) .rpop{left:auto;right:-1px}
   @media (max-width:1100px){ .rgrid.g4{grid-template-columns:repeat(2,minmax(0,1fr))!important} }
   @media (max-width:640px){ .rgrid.g4{grid-template-columns:1fr!important} }
+  /* ===== modo compacto ===== */
+  section{padding-block:34px!important}
+  .page>section:nth-of-type(even){margin-block:10px;padding-block:28px!important}
+  h2{margin-bottom:14px!important}
+  .pdesc{margin-bottom:14px!important}
+  .hero{padding-top:26px!important;padding-bottom:10px!important}
+  section.doing{padding-top:16px!important}
+  .rgrid,.sareas,.skgrid,.ecerts,.egroups,.ecol,.certs,.vals,.ejes{gap:12px!important}
+  .rcard,.sarea,.skc,.ecert,.efeat{padding:16px!important}
+  .ejes li,.val{padding:14px 16px!important}
+  .rcard p,.sarea p{font-size:.86rem!important;line-height:1.5!important}
+  /* experiencia */
+  [data-page="experiencia"] .job{padding:16px 20px!important;margin-bottom:12px!important}
+  [data-page="experiencia"] .job li{margin-bottom:2px!important}
+  [data-page="experiencia"] .job ul{font-size:.92rem}
+  .xgroup{margin-top:10px!important}
+  .xhead{padding:6px 0 10px!important;margin-bottom:12px!important}
+  .stats{margin-top:14px!important}
+  /* cursos */
+  .erow,.estep{padding:8px 0!important}
+  .esteps .estep{padding:9px 0!important}
+  .egroup{padding:4px 16px 8px!important}
+  .egh{padding:9px 0!important}
+  /* proyectos */
+  .diagram svg{min-width:820px}
+  .below{margin-top:14px!important;gap:20px!important}
+  .controls{margin-bottom:10px!important}
+  @media (max-width:760px){ section{padding-block:24px!important} .page>section:nth-of-type(even){padding-block:20px!important} }
+  .ptabs2{grid-template-columns:repeat(2,minmax(0,360px))!important;margin-bottom:18px}
+  .ptpanel[hidden]{display:none}
+  .ptpanel .phead .eyebrow{display:none}
+  .ptpanel .ptitle{font-size:1.35rem!important;margin-bottom:6px}
+  @media (max-width:640px){ .ptabs2{grid-template-columns:1fr 1fr!important} .ptabs2 .tr{display:none} }
+  /* contenido más cerca del encabezado y bloques más juntos */
+  .page>section:first-of-type{padding-top:18px!important}
+  .page>header.hero{padding-top:18px!important}
+  .page>section:first-of-type>h2{margin-bottom:10px!important}
+  /* Experiencia: empresa y cifras en una sola fila */
+  [data-page="experiencia"]>section:first-of-type{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:12px;align-items:stretch}
+  [data-page="experiencia"]>section:first-of-type>*{grid-column:1 / -1}
+  [data-page="experiencia"]>section:first-of-type>.company{grid-column:1;margin:0!important;display:block;align-self:center}
+  [data-page="experiencia"]>section:first-of-type>.stats{grid-column:2;margin:0!important;display:flex;gap:10px}
+  [data-page="experiencia"] .stat{padding:8px 16px!important;display:flex;align-items:baseline;gap:8px}
+  [data-page="experiencia"] .stat b{font-size:1.3rem!important}
+  [data-page="experiencia"] .xgroup:first-of-type{margin-top:16px!important}
+  @media (max-width:900px){
+    [data-page="experiencia"]>section:first-of-type{grid-template-columns:1fr}
+    [data-page="experiencia"]>section:first-of-type>.stats{grid-column:1;margin-top:10px!important}
+  }
   footer{padding:28px 0 48px;font-size:.85rem;color:var(--muted);font-family:var(--mono)}
   @media (max-width:640px){
     h1{font-size:1.9rem} .stats,.grid{grid-template-columns:1fr}
@@ -912,6 +961,12 @@
 <div class="page" data-page="proyectos" hidden>
 <section>
   <h2>Proyectos</h2>
+  <div class="etabs ptabs2" role="tablist" aria-label="Proyectos">
+    <button class="etab ptab" role="tab" id="pt-sites" aria-controls="pp-sites" aria-selected="true" data-p="sites"><span class="tn">Conectividad entre sites</span><span class="tr">L2EVPN, eBGP multihoming y fallas</span></button>
+    <button class="etab ptab" role="tab" id="pt-dc" aria-controls="pp-dc" aria-selected="false" tabindex="-1" data-p="dc"><span class="tn">Datacenter vPC y LACP</span><span class="tr">Nexus 9K y port-channels redundantes</span></button>
+  </div>
+  <div class="ptpanel" id="pp-sites" role="tabpanel" aria-labelledby="pt-sites">
+  
   <div class="phead">
     <div>
       <p class="eyebrow">Laboratorio GNS3 · Topología interactiva</p>
@@ -981,9 +1036,8 @@
       <dl class="rows" id="d-rows"></dl>
     </div>
   </div>
-</section>
-
-<section class="dcsec">
+</div>
+  <div class="ptpanel" id="pp-dc" role="tabpanel" aria-labelledby="pt-dc" hidden>
   <div class="phead"><div>
     <p class="eyebrow">Datacenter · Diagrama interactivo</p>
     <h3 class="ptitle">Conectividad del datacenter con vPC domain y LACP</h3>
@@ -1019,7 +1073,10 @@
       </ul>
     </div>
   </div>
+</div>
 </section>
+
+
 </div>
 
 <div class="page" data-page="servicios" hidden>
@@ -1644,6 +1701,14 @@ document.querySelectorAll('.etab .cnt').forEach(function(c){ var n=document.getE
     requestAnimationFrame(frame);
   }
   update(); show(SC.none); requestAnimationFrame(frame);
+})();
+</script>
+<script>
+(function(){
+  var tb=document.querySelectorAll('.ptab');
+  function sel(k){ tb.forEach(function(b){ var on=b.dataset.p===k; b.setAttribute('aria-selected',on); b.tabIndex=on?0:-1; document.getElementById(b.getAttribute('aria-controls')).hidden=!on; }); }
+  tb.forEach(function(b,i){ b.addEventListener('click',function(){ sel(b.dataset.p); });
+    b.addEventListener('keydown',function(e){ if(e.key==='ArrowRight'||e.key==='ArrowLeft'){ e.preventDefault(); var n=tb[(i+1)%tb.length]; sel(n.dataset.p); n.focus(); } }); });
 })();
 </script>
 </body>
