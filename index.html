@@ -774,10 +774,9 @@
   .eqt{font-size:.8rem;color:var(--muted);line-height:1.4}
   .eqt b{display:block;color:var(--text);font-size:.9rem}
   @media (prefers-reduced-motion:reduce){ .eduqr .qr{animation:none} }
-  /* foto grande sobre la columna de la foto, sin tapar la biografía */
-  .avfull{left:50%!important;top:-10px!important;transform:translateX(-50%) scale(.94)!important;transform-origin:top center!important}
-  .avwrap:hover .avfull,.avwrap:focus-visible .avfull{transform:translateX(-50%) scale(1)!important}
-  .avfull img{height:min(440px,60vh)!important}
+  /* foto grande más pequeña para no tapar la biografía */
+  .avfull img{height:var(--avh,min(330px,48vh))!important}
+  .avfull.avc{left:50%!important;transform:translateX(-50%)!important;transform-origin:top center!important}
   footer{padding:28px 0 48px;font-size:.85rem;color:var(--muted);font-family:var(--mono)}
   @media (max-width:640px){
     h1{font-size:1.9rem} .stats,.grid{grid-template-columns:1fr}
@@ -1739,6 +1738,13 @@ document.querySelectorAll('.etab .cnt').forEach(function(c){ var n=document.getE
   tb.forEach(function(b,i){ b.addEventListener('click',function(){ sel(b.dataset.p); });
     b.addEventListener('keydown',function(e){ if(e.key==='ArrowRight'||e.key==='ArrowLeft'){ e.preventDefault(); var n=tb[(i+1)%tb.length]; sel(n.dataset.p); n.focus(); } }); });
 })();
+</script>
+<script>
+(function(){var w=document.querySelector('.avwrap');if(!w)return;var f=w.querySelector('.avfull'),im=f&&f.querySelector('img'),bio=document.querySelector('.hbio');if(!im||!bio)return;
+function fit(){var r=w.getBoundingClientRect(),gap=bio.getBoundingClientRect().left-r.right-16-12-14,ratio=(im.naturalWidth/im.naturalHeight)||.47,h=Math.min(330,innerHeight*.48);
+ if(innerWidth>760 && gap/ratio>=200){f.classList.remove('avc');f.style.setProperty('--avh',Math.min(h,gap/ratio)+'px')}
+ else{f.classList.add('avc');f.style.setProperty('--avh',h+'px')}}
+w.addEventListener('mouseenter',fit);w.addEventListener('focus',fit);addEventListener('resize',fit);fit();})();
 </script>
 </body>
 </html>
