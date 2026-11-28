@@ -1741,7 +1741,8 @@ document.querySelectorAll('.etab .cnt').forEach(function(c){ var n=document.getE
 </script>
 <script>
 (function(){var w=document.querySelector('.avwrap');if(!w)return;var f=w.querySelector('.avfull'),im=f&&f.querySelector('img'),bio=document.querySelector('.hbio');if(!im||!bio)return;
-function fit(){var r=w.getBoundingClientRect(),gap=bio.getBoundingClientRect().left-r.right-16-12-14,ratio=(im.naturalWidth/im.naturalHeight)||.47,h=Math.min(330,innerHeight*.48);
+function fit(){var r=w.getBoundingClientRect(),pl=r.right+16,gap=bio.getBoundingClientRect().left-pl-12-14,ratio=(im.naturalWidth/im.naturalHeight)||.47,h=Math.min(330,innerHeight*.48),pt=r.top-6;
+ w.parentNode.querySelectorAll('h1,h2,p,.tag,.htag,.hsoc,.hmini,a,span,div').forEach(function(e){if(w.contains(e)||e.contains(w))return;var q=e.getBoundingClientRect();if(q.height&&q.top>r.top&&q.right>pl-4){h=Math.min(h,q.top-8-pt-14)}});
  if(innerWidth>760 && gap/ratio>=200){f.classList.remove('avc');f.style.setProperty('--avh',Math.min(h,gap/ratio)+'px')}
  else{f.classList.add('avc');f.style.setProperty('--avh',h+'px')}}
 w.addEventListener('mouseenter',fit);w.addEventListener('focus',fit);addEventListener('resize',fit);fit();})();
