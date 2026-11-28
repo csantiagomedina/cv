@@ -764,8 +764,10 @@
   .avfull{top:-6px!important;padding:6px!important}
   .avfull img{height:min(400px,58vh)!important;width:auto}
   /* QR debajo de Educación */
-  .eduqr{display:flex;justify-content:center;margin-top:22px}
-  .eduqr .qr{position:relative!important;top:auto!important;right:auto!important;bottom:auto!important;width:104px!important;height:104px!important;margin:0!important;flex:none;
+  .educol{position:relative}
+  .educol li:nth-child(n+2){padding-right:108px}
+  .eduqr{position:absolute;right:0;bottom:0}
+  .eduqr .qr{position:relative!important;top:auto!important;right:auto!important;bottom:auto!important;width:100px!important;height:100px!important;margin:0!important;flex:none;
     background:transparent!important;border:0!important;padding:0!important;border-radius:10px!important;box-shadow:none!important;
     filter:drop-shadow(0 6px 14px rgba(0,0,0,.28));animation:qrfloat 5s ease-in-out infinite}
   .eduqr .qr:hover,.eduqr .qr:focus-visible{animation-play-state:paused}
@@ -838,7 +840,7 @@
           <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/></svg><b>Seguridad perimetral</b></li>
         </ul>
       </div>
-      <div>
+      <div class="educol">
         <h3>Educación</h3>
         <ul class="ul-ic">
           <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg><div><b>Ingeniero de Sistemas y Computación</b><span>Universidad Dominicana O&amp;M</span></div></li>
